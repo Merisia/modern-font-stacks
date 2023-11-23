@@ -2,3 +2,4 @@
 .nova
 site/dist
 site/node_modules
+.idea

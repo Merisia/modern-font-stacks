@@ -243,3 +243,114 @@ document.querySelectorAll('.smooth-scroll').forEach(anchor => {
     window.history.replaceState(null, null, anchor.getAttribute('href'));
   });
 });
+
+const fontWeightNames={
+  100: 'Thin',
+  200:' Extra Light',
+  300:'Light',
+  400:'Regular',
+  500:'Medium',
+  600:'Semibold',
+  700:'Bold',
+  800:'Extra Bold',
+  900:'Black',
+};
+
+const fontWeightsIdentifiers = Object.keys(fontWeightNames);
+
+fontWeightsIdentifiers.forEach(fontWeight => {
+  const elements = [...document.querySelectorAll(`.weight-${fontWeight}`)];
+  elements.forEach(element => {
+    element.innerHTML = fontWeightNames[fontWeight]
+
+    // Créer une copie de l'élément
+    const italicSpan = element.cloneNode(true);
+    // Ajouter la classe "italic" à la copie
+    italicSpan.classList.add('italic');
+
+    // Ajouter le texte "Italic" à la copie
+    const weightText = italicSpan.textContent.trim();
+    if(weightText === "Regular") {
+      italicSpan.textContent = `Italic`;
+    } else {
+      italicSpan.textContent = `${weightText} Italic`;
+    }
+
+    // Insérer l'élément italique après l'élément d'origine
+    element.parentNode.insertBefore(italicSpan, element.nextSibling);
+  })
+});
+
+const titles = [...document.querySelectorAll('.font-title')];
+titles.forEach(title=>{
+  const div = document.createElement("div");
+
+  // Ajouter la classe "italic" à la copie
+  div.classList.add('Aa');
+
+  div.textContent = `Aa`;
+
+  // Insérer l'élément italique après l'élément d'origine
+  title.parentNode.insertBefore(div, title.previousSibling);
+})
+
+
+
+function addGoogleFonts(fontsArray) {
+  const params =[];
+  // Créer une liste des styles de police à partir de l'entrée
+  const fontStyles = "ital,wght@"+ [...fontWeightsIdentifiers.map(f => `0,${f}`), ...fontWeightsIdentifiers.map(f => `1,${f}`)].join(';');
+
+  fontsArray.forEach(font => {
+    const fontName = font.replace(/ /g, '+')
+    params.push(`family=${fontName}:${fontStyles}`)
+  })
+
+  // Créer l'URL pour les polices Google Fonts
+  const fontsURL = `https://fonts.googleapis.com/css2?${params.join('&')}`;
+
+  console.log(fontsURL)
+
+  // Créer une balise link
+  const linkElement = document.createElement('link');
+  linkElement.rel = 'stylesheet';
+  linkElement.href = fontsURL;
+
+  // Ajouter la balise link à l'élément head du document
+  document.head.appendChild(linkElement);
+
+  // Créer le code CSS pour les classes correspondantes aux polices chargées
+  const styleElement = document.createElement('style');
+  let cssCode = '';
+
+  fontsArray.forEach(font => {
+    const className = font.toLowerCase().replace(/ /g, '-');
+    cssCode += `
+      .${className} {
+        font-family: "${font}", sans-serif;
+      }
+    `;
+
+    const systemUI = document.querySelector('#system-ui')
+    const italicSpan = systemUI.cloneNode(true);
+    italicSpan.id=className
+    italicSpan.classList= `font-card ${className}`
+
+    italicSpan.querySelector('h3').innerText = font
+    italicSpan.querySelector('.font-stack code').innerHTML = `font-family:
+            <span class="yep">'${font}'</span>,
+            <span class="yep">sans-serif</span>;
+            <strong>font-weight: <var>normal</var>;</strong>`
+
+    systemUI.parentNode.insertBefore(italicSpan, systemUI.previousSibling);
+  });
+
+  styleElement.innerHTML = cssCode;
+
+  // Ajouter le code CSS à l'élément head du document
+  document.head.appendChild(styleElement);
+}
+
+// Utilisation de la fonction avec l'entrée [Libre Franklin]
+const fontsToLoad = ['Libre Franklin', 'Raleway'];
+addGoogleFonts(fontsToLoad);

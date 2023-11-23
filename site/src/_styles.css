@@ -315,21 +315,21 @@ section > h2 {
   background:
     linear-gradient(45deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 43%,#ccc 45%,#ccc 55%,rgba(0,0,0,0) 57%,rgba(0,0,0,0) 100%),
     linear-gradient(135deg, transparent 0%,transparent 43%,#ccc 45%,#ccc 55%,transparent 57%,transparent 100%);
-  cursor: pointer:
+  cursor: pointer;
 }
 
 
 /* === SECTION: FONT STACKS === */
 
 #font-stacks {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 #fonts {
   max-width: 84rem;
   margin: 0 auto;
   padding: 2rem 1rem;
-  font-size: 2rem;
+  font-size: 20px;
 }
 
 .font-card {
@@ -343,6 +343,7 @@ section > h2 {
   border: 1px solid #888;
   box-shadow: 4px 4px 0 0 rgba(0,0,0,0.15);
   scroll-margin-top: 6rem;
+  max-width: 600px;
 }
 
 .font-link {
@@ -378,14 +379,15 @@ section > h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem .75rem;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 0 10px;
+  /*border-bottom: 1px solid #e5e7eb;*/
 }
 
 .font-title h3 {
-  font-size: 1.5rem;
+  font-size: 40px;
   margin: 0;
-  font-weight: 400;
+  color:#3A67B1;
+  font-weight: 500;
   text-align: left;
 }
 
@@ -407,28 +409,29 @@ section > h2 {
   display: block;
   flex: 1 auto;
   margin: 0;
-  padding: 1.5rem .75rem;
+  padding: 10px;
   line-height: 1.2;
   overflow: hidden;
 }
 
 .font-preview:empty:after {
-  content: "ABCDEFGHIJKLM\a NOPQRSTUVWXYZ\a abcdefghijklm\a nopqrstuvwxyz\a 1234567890";
+  content: "ABCDEFGHIJKLMNOPQRSTUVWXYZ\a abcdefghijklmnopqrstuvwxyz\a 0123456789!@#$%^&*(),./;’:”<>?";
   white-space: pre;
 }
 
 .font-weights {
-  display: flex;
+  /*display: flex;*/
   justify-content: space-between;
-  font-size: .9375rem;
-  padding: 1rem .75rem;
-  border-top: 1px solid #e5e7eb;
+  font-size: 16px;
+  padding: 0 10px;
+  /*border-top: 1px solid #e5e7eb;*/
 }
 
 .font-weights span {
   text-decoration: none;
   text-underline-offset: 3px;
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .weight-100 { font-weight: 100; }
@@ -440,6 +443,7 @@ section > h2 {
 .weight-700 { font-weight: 700; }
 .weight-800 { font-weight: 800; }
 .weight-900 { font-weight: 900; }
+.italic { font-style: italic; }
 
 [data-weight="100"] .weight-100,
 [data-weight="200"] .weight-200,
@@ -450,7 +454,7 @@ section > h2 {
 [data-weight="700"] .weight-700,
 [data-weight="800"] .weight-800,
 [data-weight="900"] .weight-900 { 
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .font-stack {
@@ -460,7 +464,7 @@ section > h2 {
   min-height: 5rem;
   text-align: left;
   padding: .5rem .75rem .75rem;
-  border-top: 1px solid #e5e7eb;
+  /*border-top: 1px solid #e5e7eb;*/
 }
 
 .font-stack code {
@@ -802,7 +806,7 @@ footer span {
 
 
 /* === SM DESKTOP STYLES === */
-@media (min-width: 42rem) {
+@media (min-width: 420rem) {
   
   header h2 {
     font-size: 1.25rem;
@@ -836,13 +840,13 @@ footer span {
 
   #fonts {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+    /*grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));*/
     gap: 0 1.5rem;
     padding: 3rem 1.5rem 4rem;
   }
   
   .font-title {
-    padding: 1.25rem 1rem;
+    padding: 0 10px;
   }
   
   .font-preview {
@@ -978,4 +982,10 @@ footer span {
     border-bottom: 0.75rem solid #000;
   }
   
+}
+
+.Aa {
+  font-size: 100px;
+  color: #989899;
+  padding: 0 10px;
 }
